@@ -1,52 +1,21 @@
 <div class="Login" background="red">
+  <h1>INICIO DE SESIÓN</h1>
   <div class="row">
     <form class="col s12">
       <div class="input-field col s6">
         <input placeholder="Nombre Usuario" name="usuario" [(ngModel)]="usuario.user" id="first_name" type="text" class="validate">
-        <label for="first_name">Nombre Usuario</label>
+       
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input name="password" [(ngModel)]="usuario.password" id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="email" [(ngModel)]="usuario.email" id="email" type="email" class="validate">
-          <label for="email">Email</label>
+          <input placeholder="Contraseña" name="password" [(ngModel)]="usuario.password" id="password" type="password" class="validate">
+          
         </div>
       </div>
       <!--button class="btn waves-effect waves-light" (click)="updateUser(datosUser)">Update
       </button-->
-      <button class="btn waves-effect waves-light" (click)="onLogin()" name="action">Crear
+      <button class="btn waves-effect waves-light" (click)="onLogin()" name="action">Iniciar Sesión
       </button>
     </form>
   </div>
-</div>
-
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre de Usuario</th>
-        <th>Contraseña</th>
-        <th>Correo</th>
-      </tr>
-    </thead>
-
-    <!--tbody>
-      <tr *ngFor="let i of user">
-        <td>{{i.nombreUsuario}}</td>
-        <td>{{i.password}}</td>
-        <td>{{i.email}}</td>
-        <td>
-          <button (click)="deleteUser(i.nombreUsuario)">
-            <i>Borrar</i>
-          </button>
-        </td>
-      </tr>
-    </tbody-->
-  </table>
-
 </div>

@@ -28,6 +28,10 @@ export class TorneoComponent implements OnInit {
   }
 
   addTorneo() {
+    if (this.userService.getUsuario() == null || this.userService.getUsuario() === '') {
+      alert('USUARIO NO AUTENTICADO, POR FAVOR AUTENTIQUESE!!');
+      return;
+    }
     this.torneo.usuario = this.userService.getUsuario();
     this.torneoService.crearTorneo(this.torneo).subscribe(
       result => {
@@ -68,7 +72,9 @@ export class TorneoComponent implements OnInit {
       return;
     }
     this.torneoService.getTorneo(this.torneo.codigo).subscribe(result => {
+      console.log("restorna ",result);
        const message = JSON.parse(result._body);
+       console.log("Entra aqui y klo que llega es",message);
       if (message !== '') {
         this.torneo.nombre = message.nombre;
         this.torneo.codigo = message.codigo;
@@ -85,7 +91,8 @@ export class TorneoComponent implements OnInit {
       }
     },
       error => {
-        console.log('Este es el error  del frontend ' + <any>error);
+        alert("Codigo no encontrado, por favor ingrese un codigo");
+        return;
       });
   }
 
@@ -115,7 +122,8 @@ export class TorneoComponent implements OnInit {
       }
     },
       error => {
-        console.log('Este es el error  del frontend ' + <any>error);
+        alert("No se puede borrar el torneo!!");
+        return;
     });
   }
 }

@@ -22,7 +22,9 @@ export class TorneoService {
   }
 
   getTorneo(codigo: String): Observable<any> {
-    return this.http.get(this.url + '?codigo=' + codigo).map(result => {
+
+    return this.http.get(this.url +'/torneo'+ '?codigo=' + codigo).map(result => {
+      console.log("lelgada ",result);
       return result;
     });
   }
