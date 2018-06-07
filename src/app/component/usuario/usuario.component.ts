@@ -19,24 +19,25 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {}
 
-  onLogin() {
-    this.servicio.login(this.usuario).subscribe(result => {
-      alert(result);
-      if (result.Message === 'usuario autenticado') {
-        alert(result);
+  registro() {
+    this.servicio.registro(this.usuario).subscribe( result => {
+      const message = JSON.parse(result._body).Message;
+      if (message === 'Usuario registrado correctamente') {
+        alert(message);
         this.usuario.user = '';
         this.usuario.password = '';
         this.usuario.email = '';
-        this.routes.navigate(['../torneo']);
+        this.routes.navigate(['../login']);
       } else {
         this.usuario.user = '';
         this.usuario.password = '';
         this.usuario.email = '';
-        this.errorMessage = result;
+        this.errorMessage = message;
       }
     },
       error => {
         console.log('Este es el error  del frontend ' + <any>error);
-      });
+      }
+    );
   }
 }

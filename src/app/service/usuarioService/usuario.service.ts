@@ -7,19 +7,29 @@ import { Usuario } from '../../class/usuario';
 @Injectable()
 export class UsuarioService {
   nombreUsuario: String = '';
+  password: String = '';
   url = 'http://localhost:8080/UScoresWS/rest/usuario';
   constructor(private http: Http) {}
+
+  getUsuario() {
+    return this.nombreUsuario;
+  }
+
+  getPassword() {
+    return this.password;
+  }
 
   login(user: Usuario): Observable<any> {
     return this.http.post(this.url, user).map(Response => {
       this.nombreUsuario = user.user;
-      return Response.text();
+      this.password = user.password;
+      return Response;
     });
   }
 
-  registro(user: Usuario) {
+  registro(user: Usuario): Observable<any> {
     return this.http.post(this.url, user).map(Response => {
-      return Response.text();
+      return Response;
     });
   }
 }

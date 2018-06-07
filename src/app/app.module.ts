@@ -16,6 +16,7 @@ import { TorneoFavoritoService } from './service/torneoFavoritoService/torneo-fa
 import { TorneoService } from './service/torneoService/torneo.service';
 import { PartidoService } from './service/partidoService/partido.service';
 import { LoginComponent } from './component/login/login.component';
+import { ListaTorneoComponent } from './component/lista-torneo/lista-torneo.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoginComponent } from './component/login/login.component';
     TorneoFavoritoComponent,
     UsuarioComponent,
     EquipoComponent,
-    LoginComponent
+    LoginComponent,
+    ListaTorneoComponent
   ],
   imports: [
     BrowserModule,

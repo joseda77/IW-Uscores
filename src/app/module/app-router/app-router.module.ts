@@ -27,6 +27,10 @@ const appModule: Routes = [
   {
     path: 'equipo',
     component: EquipoComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 @NgModule({

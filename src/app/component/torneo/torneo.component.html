@@ -1,3 +1,57 @@
-<p>
-  torneo works!
-</p>
+<form name="loginUserForm" class="col s12">
+  <div>
+    <div>
+      <label>Buscar Torneo</label>
+      <input type="text" required name="busqueda" [(ngModel)]="torneo.codigo" />
+      <button name="Buscar" (click)="getTorneo()" class="btn waves-effect waves-light">Buscar</button>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Nombre</label>
+      <input type="text" required name="nombreTorneo" [(ngModel)]="torneo.nombre" />
+    </div>
+    <div>
+      <label>Código</label>
+      <input type="text" required name="codigo" [(ngModel)]="torneo.codigo" />
+    </div>
+    <div>
+      <label>Deporte</label>
+      <input type="text" required name="deporte" [(ngModel)]="torneo.deporte" />
+    </div>
+    <div>
+      <label>Tipo de Torneo</label>
+      <input type="text" required name="tipoTorneo" [(ngModel)]="torneo.tipoTorneo" />
+    </div>
+    <button name="Validar" type="submit" (click)="addTorneo()" class="btn waves-effect waves-light">Crear Torneo</button>
+    <button name="borrar" type="delete" (click)="deleteTorneo()" class="btn waves-effect waves-light">Borrar Torneo</button>
+  </div>
+</form>
+
+<!--div>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del Torneo</th>
+        <th>Codigo</th>
+        <th>Deporte</th>
+        <th>Tipo de Torneo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let i of torneo">
+        <td>{{i.nombre}}</td>
+        <td>{{i.codigo}}</td>
+        <td>{{i.deporte}}</td>
+        <td>{{i.tipoTorneo}}</td>
+        <td>
+          <button (click)="deleteTorneo(i.nombreUsuario)">
+            <i>Borrar</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div-->

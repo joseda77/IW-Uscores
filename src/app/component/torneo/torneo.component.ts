@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TorneoService } from '../../service/torneoService/torneo.service';
+import { Router } from '@angular/router';
+import { Torneo } from '../../class/torneo';
+import { UsuarioService } from '../../service/usuarioService/usuario.service';
 
 @Component({
   selector: 'app-torneo',
@@ -6,10 +10,112 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./torneo.component.css']
 })
 export class TorneoComponent implements OnInit {
+  torneo: Torneo = {
+    nombre: '' ,
+    codigo: '' ,
+    usuario: '' ,
+    deporte: '' ,
+    tipoTorneo: '',
+    password: ''
+  };
 
-  constructor() { }
+  errorMessage = '';
+  constructor(public torneoService: TorneoService, public routes: Router,
+     public userService: UsuarioService) {
+      }
 
   ngOnInit() {
   }
 
+  addTorneo() {
+    this.torneo.usuario = this.userService.getUsuario();
+    this.torneoService.crearTorneo(this.torneo).subscribe(
+      result => {
+        const message = JSON.parse(result._body).Message;
+        if (message === 'Torneo creado correctamente') {
+          alert(message);
+          this.torneo.nombre = '';
+          this.torneo.codigo = '';
+          this.torneo.usuario = '';
+          this.torneo.tipoTorneo = '';
+          this.torneo.deporte = '';
+          this.routes.navigate(['../partido']);
+        } else {
+          this.torneo.nombre = '';
+          this.torneo.codigo = '';
+          this.torneo.usuario = '';
+          this.torneo.tipoTorneo = '';
+          this.torneo.deporte = '';
+          this.errorMessage = message;
+        }
+      },
+      error => {
+        console.log('Este es el error  del frontend ' + <any>error);
+      }
+    );
+  }
+
+  getListaTorneo() {
+    this.torneoService.getListTorneos().subscribe(result => {
+      const message = JSON.parse(result._body);
+      console.log(message);
+    });
+  }
+
+  getTorneo() {
+    if (this.torneo.codigo === '') {
+      alert('Codigo ingresado no valido o en blanco!!!');
+      return;
+    }
+    this.torneoService.getTorneo(this.torneo.codigo).subscribe(result => {
+       const message = JSON.parse(result._body);
+      if (message !== '') {
+        this.torneo.nombre = message.nombre;
+        this.torneo.codigo = message.codigo;
+        this.torneo.usuario = message.usuario;
+        this.torneo.tipoTorneo = message.tipoTorneo;
+        this.torneo.deporte = message.deporte;
+      } else {
+        this.torneo.nombre = '';
+        this.torneo.codigo = '';
+        this.torneo.usuario = '';
+        this.torneo.tipoTorneo = '';
+        this.torneo.deporte = '';
+        this.errorMessage = message;
+      }
+    },
+      error => {
+        console.log('Este es el error  del frontend ' + <any>error);
+      });
+  }
+
+  deleteTorneo() {
+    console.log(this.userService.getUsuario());
+    if (this.userService.getUsuario() == null || this.userService.getUsuario() === '') {
+      alert('USUARIO NO AUTENTICADO, POR FAVOR AUTENTIQUESE!!');
+      return;
+    }
+    this.torneo.usuario = this.userService.getUsuario();
+    this.torneoService.deleteTorneo(this.torneo).subscribe(result => {
+      const message = JSON.parse(result._body).Message;
+      if (message === 'Torneo eliminado') {
+        this.torneo.nombre = '';
+        this.torneo.codigo = '';
+        this.torneo.usuario = '';
+        this.torneo.tipoTorneo = '';
+        this.torneo.deporte = '';
+        alert('Torneo eliminado con exito');
+      } else {
+        this.torneo.nombre = '';
+        this.torneo.codigo = '';
+        this.torneo.usuario = '';
+        this.torneo.tipoTorneo = '';
+        this.torneo.deporte = '';
+        this.errorMessage = message;
+      }
+    },
+      error => {
+        console.log('Este es el error  del frontend ' + <any>error);
+    });
+  }
 }

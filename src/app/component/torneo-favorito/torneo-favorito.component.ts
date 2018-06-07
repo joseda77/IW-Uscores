@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TorneoFavoritoService } from '../../service/torneoFavoritoService/torneo-favorito.service';
+import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuarioService/usuario.service';
 
 @Component({
   selector: 'app-torneo-favorito',
@@ -7,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TorneoFavoritoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public torneoFavService: TorneoFavoritoService, public routes: Router,
+    public userService: UsuarioService) { }
 
   ngOnInit() {
   }

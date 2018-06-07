@@ -19,7 +19,7 @@
       </div>
       <!--button class="btn waves-effect waves-light" (click)="updateUser(datosUser)">Update
       </button-->
-      <button class="btn waves-effect waves-light" (click)="onLogin()" name="action">Crear
+      <button class="btn waves-effect waves-light" (click)="registro()" name="action">Crear
       </button>
     </form>
   </div>
@@ -29,6 +29,7 @@
   <table>
     <thead>
       <tr>
+        <th>{{errorMessage}}</th>
         <th>Nombre de Usuario</th>
         <th>Contraseña</th>
         <th>Correo</th>
