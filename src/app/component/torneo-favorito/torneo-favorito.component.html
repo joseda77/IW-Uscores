@@ -1,3 +1,33 @@
-<p>
-  torneo-favorito works!
-</p>
+<div>
+  <input name="text"  type="text" placeholder="Ingrese un torneo" [(ngModel)]="torneo.codigo">
+  <input name="add" (click)="addTorneoFav()" class="btn btn-primary" type="submit" value="Obtener torneos">
+</div>
+<div>
+  <input name="borrar" (click)="getTorneos()" class="btn btn-primary" type="submit" value="Obtener torneos">
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre del Torneo</th>
+          <th>Codigo</th>
+          <th>Deporte</th>
+          <th>Tipo de Torneo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let i of listaTorneo">
+          <td>{{torneo.nombre}}</td>
+          <td>{{torneo.codigo}}</td>
+          <td>{{torneo.deporte}}</td>
+          <td>{{torneo.tipoTorneo}}</td>
+          <td>
+            <button (click)="deleteTorneo(i.nombreUsuario)">
+              <i>Borrar</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

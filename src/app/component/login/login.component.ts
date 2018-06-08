@@ -23,11 +23,12 @@ export class LoginComponent implements OnInit {
       result => {
         const message = JSON.parse(result._body).Message;
         if (message === 'usuario autenticado') {
+          sessionStorage.setItem('usuario',this.usuario.user);
           alert(message);
           this.usuario.user = '';
           this.usuario.password = '';
           this.usuario.email = '';
-          this.routes.navigate(['../torneo']);
+          this.routes.navigate(['../torneofavorito']);
         } else {
           this.usuario.user = '';
           this.usuario.password = '';

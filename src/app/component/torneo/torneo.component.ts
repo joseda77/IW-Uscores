@@ -15,8 +15,7 @@ export class TorneoComponent implements OnInit {
     codigo: '' ,
     usuario: '' ,
     deporte: '' ,
-    tipoTorneo: '',
-    password: ''
+    tipoTorneo: ''
   };
 
   errorMessage = '';
@@ -32,7 +31,7 @@ export class TorneoComponent implements OnInit {
       alert('USUARIO NO AUTENTICADO, POR FAVOR AUTENTIQUESE!!');
       return;
     }
-    this.torneo.usuario = this.userService.getUsuario();
+    this.torneo.usuario = sessionStorage.getItem('usuario');
     this.torneoService.crearTorneo(this.torneo).subscribe(
       result => {
         const message = JSON.parse(result._body).Message;
@@ -74,7 +73,7 @@ export class TorneoComponent implements OnInit {
     this.torneoService.getTorneo(this.torneo.codigo).subscribe(result => {
       console.log("restorna ",result);
        const message = JSON.parse(result._body);
-       console.log("Entra aqui y klo que llega es",message);
+       console.log("Entra aqui y lo que llega es",message);
       if (message !== '') {
         this.torneo.nombre = message.nombre;
         this.torneo.codigo = message.codigo;

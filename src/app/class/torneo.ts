@@ -4,5 +4,4 @@ export class Torneo {
   usuario: String;
   deporte: String;
   tipoTorneo: String;
-  password: String;
 }
