@@ -7,6 +7,8 @@ import { PartidoComponent } from '../../component/partido/partido.component';
 import { TorneoFavoritoComponent } from '../../component/torneo-favorito/torneo-favorito.component';
 import { EquipoComponent } from '../../component/equipo/equipo.component';
 import { UsuarioComponent } from '../../component/usuario/usuario.component';
+import { ListaPartidosComponent } from '../../component/lista-partidos/lista-partidos.component';
+import { ListaTorneoComponent } from '../../component/lista-torneo/lista-torneo.component';
 const appModule: Routes = [
   {
     path: '',
@@ -31,6 +33,14 @@ const appModule: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'listapartidos',
+    component: ListaPartidosComponent
+  },
+  {
+    path: 'listatorneos',
+    component: ListaTorneoComponent
   }
 ];
 @NgModule({

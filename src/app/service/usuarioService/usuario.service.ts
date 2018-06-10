@@ -20,7 +20,7 @@ export class UsuarioService {
   }
 
   login(user: Usuario): Observable<any> {
-    return this.http.post(this.url+"/login", user).map(Response => {
+    return this.http.post(this.url + '/login', user).map(Response => {
       this.nombreUsuario = user.user;
       this.password = user.password;
       return Response;
@@ -28,7 +28,7 @@ export class UsuarioService {
   }
 
   registro(user: Usuario): Observable<any> {
-    return this.http.post(this.url+"/signup", user).map(Response => {
+    return this.http.post(this.url + '/signup', user).map(Response => {
       return Response;
     });
   }

@@ -1,0 +1,30 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Local</th>
+        <th>Puntaje 1</th>
+        <th>Puntaje 2</th>
+        <th>Visitante</th>
+        <th>Torneo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let i of listaPartidos">
+        <th>{{i.consecutivo}}</th>
+        <td>{{i.equipo1}}</td>
+        <td>{{i.puntaje1}}</td>
+        <td>{{i.puntaje2}}</td>
+        <td>{{i.equipo2}}</td>
+        <th>{{i.torneo}}</th>
+        <td>
+          <button (click)="getOnePartido(i)">
+            <i>Mostrar Partido</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

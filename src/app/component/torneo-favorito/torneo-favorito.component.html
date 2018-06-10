@@ -1,9 +1,9 @@
 <div>
+  <p>{{infoMessage}}</p>
   <input name="text"  type="text" placeholder="Ingrese un torneo" [(ngModel)]="torneo.codigo">
   <input name="add" (click)="addTorneoFav()" class="btn btn-primary" type="submit" value="Obtener torneos">
 </div>
 <div>
-  <input name="borrar" (click)="getTorneos()" class="btn btn-primary" type="submit" value="Obtener torneos">
   <div>
     <table>
       <thead>
@@ -22,7 +22,7 @@
           <td>{{torneo.deporte}}</td>
           <td>{{torneo.tipoTorneo}}</td>
           <td>
-            <button (click)="deleteTorneo(i.nombreUsuario)">
+            <button (click)="deleteTorneo(i)">
               <i>Borrar</i>
             </button>
           </td>

@@ -1,3 +1,26 @@
-<p>
-  partido works!
-</p>
+<div>
+  <div class="text-center">
+    <h1>Torneo: {{partido.torneo}}</h1>
+    <h2>Fase: {{partido.fase}}</h2>
+    <h2>Partido Número: {{partido.consecutivo}}</h2>
+  </div>
+  <div class="text-center">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th><h1>Local</h1></th>
+          <th colspan="2"><h1>Marcador</h1></th>
+          <th><h1>Visitante</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h1>{{partido.equipo1}}</h1></td>
+          <td><h1>{{partido.puntaje1}}</h1></td>
+          <td><h1>{{partido.puntaje2}}</h1></td>
+          <td><h1>{{partido.equipo2}}</h1></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

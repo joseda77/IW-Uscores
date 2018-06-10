@@ -17,21 +17,24 @@ export class TorneoComponent implements OnInit {
     deporte: '' ,
     tipoTorneo: ''
   };
-
+  user = '';
   errorMessage = '';
   constructor(public torneoService: TorneoService, public routes: Router,
      public userService: UsuarioService) {
+        this.user = sessionStorage.getItem('usuario');
+        this.torneo.codigo = this.torneoService.getCodTorneo();
+        this.getTorneo();
       }
 
   ngOnInit() {
   }
 
   addTorneo() {
-    if (this.userService.getUsuario() == null || this.userService.getUsuario() === '') {
+    if (this.user == null || this.user === '') {
       alert('USUARIO NO AUTENTICADO, POR FAVOR AUTENTIQUESE!!');
       return;
     }
-    this.torneo.usuario = sessionStorage.getItem('usuario');
+    this.torneo.usuario = this.user;
     this.torneoService.crearTorneo(this.torneo).subscribe(
       result => {
         const message = JSON.parse(result._body).Message;
@@ -71,9 +74,9 @@ export class TorneoComponent implements OnInit {
       return;
     }
     this.torneoService.getTorneo(this.torneo.codigo).subscribe(result => {
-      console.log("restorna ",result);
+      console.log('retorna ', result);
        const message = JSON.parse(result._body);
-       console.log("Entra aqui y lo que llega es",message);
+       console.log('Entra aqui y lo que llega es', message);
       if (message !== '') {
         this.torneo.nombre = message.nombre;
         this.torneo.codigo = message.codigo;
@@ -90,18 +93,18 @@ export class TorneoComponent implements OnInit {
       }
     },
       error => {
-        alert("Codigo no encontrado, por favor ingrese un codigo");
+        alert('Codigo no encontrado, por favor ingrese un codigo');
         return;
       });
   }
 
   deleteTorneo() {
     console.log(this.userService.getUsuario());
-    if (this.userService.getUsuario() == null || this.userService.getUsuario() === '') {
+    if (this.user == null || this.user === '') {
       alert('USUARIO NO AUTENTICADO, POR FAVOR AUTENTIQUESE!!');
       return;
     }
-    this.torneo.usuario = this.userService.getUsuario();
+    this.torneo.usuario = this.user;
     this.torneoService.deleteTorneo(this.torneo).subscribe(result => {
       const message = JSON.parse(result._body).Message;
       if (message === 'Torneo eliminado') {
@@ -121,7 +124,7 @@ export class TorneoComponent implements OnInit {
       }
     },
       error => {
-        alert("No se puede borrar el torneo!!");
+        alert('No se puede borrar el torneo!!');
         return;
     });
   }

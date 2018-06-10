@@ -11,13 +11,19 @@ export class TorneoFavoritoService {
 
   getList(usuario: String): Observable<any> {
     console.log(usuario);
-    return this.http.get(this.url+'?usuario='+usuario).map(result => {
+    return this.http.get(this.url + '?usuario=' + usuario).map(result => {
       return result;
     });
   }
 
-  addTorneo(torneo:Torneo):Observable<any>{
-    return this.http.post(this.url,torneo).map(Response =>{
+  addTorneo(torneo: Torneo): Observable<any> {
+    return this.http.post(this.url + '?usuario=' + torneo.usuario, torneo).map(Response => {
+      return Response;
+    });
+  }
+
+  deleteTorneo(usuario: String, codigo: String): Observable<any> {
+    return this.http.delete(this.url + '?usuario=' + usuario + '&codigo=' +  codigo).map(Response => {
       return Response;
     });
   }

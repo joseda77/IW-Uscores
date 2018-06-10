@@ -1,3 +1,25 @@
-<p>
-  lista-torneo works!
-</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Codigo Del Torneo</th>
+        <th>Nombre Del Torneo</th>
+        <th>Tipo De Torneo</th>
+        <th>Deporte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of listaTorneo">
+        <th>{{i.codigo}}</th>
+        <td>{{i.nombre}}</td>
+        <td>{{i.tipoTorneo}}</td>
+        <td>{{i.deporte}}</td>
+        <td>
+          <button (click)="getInfTorneo(i.codigo)">
+            <i>Mostrar Torneo</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

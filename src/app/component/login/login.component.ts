@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       result => {
         const message = JSON.parse(result._body).Message;
         if (message === 'usuario autenticado') {
-          sessionStorage.setItem('usuario',this.usuario.user);
+          sessionStorage.setItem('usuario', this.usuario.user);
           alert(message);
           this.usuario.user = '';
           this.usuario.password = '';

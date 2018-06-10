@@ -6,8 +6,17 @@ import { Torneo } from '../../class/torneo';
 
 @Injectable()
 export class TorneoService {
+  codigo = '';
   url = 'http://localhost:8080/UScoresWS/rest/torneo';
   constructor(private http: Http) {}
+
+  setTorneo(codigo: string) {
+    this.codigo = codigo;
+  }
+
+  getCodTorneo() {
+    return this.codigo;
+  }
 
   crearTorneo(torneo: Torneo): Observable<any> {
     return this.http.post(this.url, torneo).map(result => {
@@ -23,8 +32,8 @@ export class TorneoService {
 
   getTorneo(codigo: String): Observable<any> {
 
-    return this.http.get(this.url +'/torneo'+ '?codigo=' + codigo).map(result => {
-      console.log("lelgada ",result);
+    return this.http.get(this.url + '/torneo' + '?codigo=' + codigo).map(result => {
+      console.log('lelgada ', result);
       return result;
     });
   }
