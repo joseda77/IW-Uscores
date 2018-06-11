@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
   onLogin() {
+    if (this.usuario.user === '' || this.usuario.password === '') {
+      alert('Hay campos en blanco. Por favor ingrese datos correctos');
+      return;
+    }
     this.servicio.login(this.usuario).subscribe(
       result => {
         const message = JSON.parse(result._body).Message;

@@ -1,11 +1,19 @@
-<div>
-  <table>
-    <thead>
+<div class="text-center">
+  <div>
+    <label>Buscar Torneo</label>
+    <input type="text" required name="busqueda" [(ngModel)]="codigo" />
+    <button name="Buscar" (click)="getTorneo()" class="btn waves-effect waves-light">Buscar</button>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead class="thead-dark">
       <tr>
         <th>Codigo Del Torneo</th>
         <th>Nombre Del Torneo</th>
         <th>Tipo De Torneo</th>
         <th>Deporte</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>

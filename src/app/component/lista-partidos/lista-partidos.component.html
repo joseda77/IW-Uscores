@@ -1,6 +1,6 @@
-<div>
-  <table>
-    <thead>
+<div class="container text-center">
+  <table class="table table-striped">
+    <thead class="thead-dark">
       <tr>
         <th>Codigo</th>
         <th>Local</th>
@@ -8,9 +8,9 @@
         <th>Puntaje 2</th>
         <th>Visitante</th>
         <th>Torneo</th>
+        <th>Mostrar Partido</th>
       </tr>
     </thead>
-
     <tbody>
       <tr *ngFor="let i of listaPartidos">
         <th>{{i.consecutivo}}</th>

@@ -1,53 +1,18 @@
-<div class="Login" background="red">
-  <div class="row">
-    <form class="col s12">
-      <div class="input-field col s6">
-        <input placeholder="Nombre Usuario" name="usuario" [(ngModel)]="usuario.user" id="first_name" type="text" class="validate">
-        <label for="first_name">Nombre Usuario</label>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="password" [(ngModel)]="usuario.password" id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="email" [(ngModel)]="usuario.email" id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <!--button class="btn waves-effect waves-light" (click)="updateUser(datosUser)">Update
-      </button-->
-      <button class="btn waves-effect waves-light" (click)="registro()" name="action">Crear
-      </button>
-    </form>
-  </div>
-</div>
-
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>{{errorMessage}}</th>
-        <th>Nombre de Usuario</th>
-        <th>Contraseña</th>
-        <th>Correo</th>
-      </tr>
-    </thead>
-
-    <!--tbody>
-      <tr *ngFor="let i of user">
-        <td>{{i.nombreUsuario}}</td>
-        <td>{{i.password}}</td>
-        <td>{{i.email}}</td>
-        <td>
-          <button (click)="deleteUser(i.nombreUsuario)">
-            <i>Borrar</i>
-          </button>
-        </td>
-      </tr>
-    </tbody-->
-  </table>
-
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="first_name">Nombre de usuario</label>
+      <input type="text" [(ngModel)]="usuario.user" name="usuario" class="form-control"  placeholder="Nombre de usuario">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" [(ngModel)]="usuario.email" class="form-control"  aria-describedby="emailHelp" placeholder="Ingrese email">
+      <small id="emailHelp"  class="form-text text-muted">{{errorMessage}}</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" [(ngModel)]="usuario.password" class="form-control" placeholder="Password">
+    </div>
+    <button class="btn btn-primary" (click)="registro()" name="action">Crear Usuario</button>
+   </form>
 </div>

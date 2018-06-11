@@ -1,13 +1,32 @@
-<form name="loginUserForm" class="col s12">
+<form name="loginUserForm" class="text-center">
   <div>
     <div>
       <label>Buscar Torneo</label>
       <input type="text" required name="busqueda" [(ngModel)]="torneo.codigo" />
       <button name="Buscar" (click)="getTorneo()" class="btn waves-effect waves-light">Buscar</button>
     </div>
-  </div>
-  <div>
     <div>
+      <button name="Buscar" (click)="muestraVista()" class="btn waves-effect waves-light" [hidden]="!bandera">Crear Torneo</button>
+    </div>
+  </div>
+  <div [hidden]="!bandera" class="shadow-none p-3 mb-5 bg-light rounded">
+    <div>
+      <label>Nombre: {{torneo.nombre}}</label>
+    </div>
+    <div>
+      <label>Deporte: {{torneo.deporte}}</label>
+    </div>
+    <div>
+      <label>Tipo de Torneo: {{torneo.tipoTorneo}}</label>
+    </div>
+    <div>
+      <label>Código: {{torneo.codigo}}</label>
+    </div>
+    <button name="borrar" type="delete" (click)="deleteTorneo()" class="btn waves-effect waves-light">Borrar Torneo</button>
+    <button name="add" type="submit" (click)="addTorneoFavorito()" class="btn waves-effect waves-light">Agregar a Favoritos</button>
+  </div>
+  <div [hidden]="bandera" class="shadow-none p-3 mb-5 bg-light rounded ">
+    <div class="container">
       <label>Nombre</label>
       <input type="text" required name="nombreTorneo" [(ngModel)]="torneo.nombre" />
     </div>
@@ -24,34 +43,5 @@
       <input type="text" required name="tipoTorneo" [(ngModel)]="torneo.tipoTorneo" />
     </div>
     <button name="Validar" type="submit" (click)="addTorneo()" class="btn waves-effect waves-light">Crear Torneo</button>
-    <button name="borrar" type="delete" (click)="deleteTorneo()" class="btn waves-effect waves-light">Borrar Torneo</button>
   </div>
 </form>
-
-<!--div>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre del Torneo</th>
-        <th>Codigo</th>
-        <th>Deporte</th>
-        <th>Tipo de Torneo</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let i of torneo">
-        <td>{{i.nombre}}</td>
-        <td>{{i.codigo}}</td>
-        <td>{{i.deporte}}</td>
-        <td>{{i.tipoTorneo}}</td>
-        <td>
-          <button (click)="deleteTorneo(i.nombreUsuario)">
-            <i>Borrar</i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</div-->

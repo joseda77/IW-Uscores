@@ -12,6 +12,10 @@ import { ListaTorneoComponent } from '../../component/lista-torneo/lista-torneo.
 const appModule: Routes = [
   {
     path: '',
+    component: ListaTorneoComponent
+  },
+  {
+    path: 'registro',
     component: UsuarioComponent
   },
   {

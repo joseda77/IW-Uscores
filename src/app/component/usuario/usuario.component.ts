@@ -20,6 +20,10 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {}
 
   registro() {
+    if (this.usuario.user === '' || this.usuario.password === '' || this.usuario.email === '') {
+      alert('Hay campos en blanco. Por favor ingrese datos correctos');
+      return;
+    }
     this.servicio.registro(this.usuario).subscribe( result => {
       const message = JSON.parse(result._body).Message;
       if (message === 'Usuario registrado correctamente') {

@@ -1,20 +1,21 @@
-<div>
-  <p>{{infoMessage}}</p>
-  <input name="text"  type="text" placeholder="Ingrese un torneo" [(ngModel)]="torneo.codigo">
-  <input name="add" (click)="addTorneoFav()" class="btn btn-primary" type="submit" value="Obtener torneos">
+<div class="container text-center">
+
+  <input name="text"  type="text" placeholder="Ingrese un torneo" [(ngModel)]="codigo">
+  <input name="add" (click)="getTorneo()" class="btn btn-primary" type="submit" value="Buscar torneo">
 </div>
-<div>
+<div class="container text-center">
   <div>
-    <table>
-      <thead>
+    <p>{{infoMessage}}</p>
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
           <th>Nombre del Torneo</th>
           <th>Codigo</th>
           <th>Deporte</th>
           <th>Tipo de Torneo</th>
+          <th>Acción</th>
         </tr>
       </thead>
-
       <tbody>
         <tr *ngFor="let i of listaTorneo">
           <td>{{torneo.nombre}}</td>

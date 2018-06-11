@@ -1,21 +1,19 @@
-<div class="Login" background="red">
+<div class="container text-center" background="red">
   <h1>INICIO DE SESIÓN</h1>
-  <div class="row">
+  <div class="form-group">
     <form class="col s12">
       <div class="input-field col s6">
-        <input placeholder="Nombre Usuario" name="usuario" [(ngModel)]="usuario.user" id="first_name" type="text" class="validate">
-       
+        <input class="form-control" placeholder="Nombre Usuario" name="usuario" [(ngModel)]="usuario.user" id="first_name" type="text" class="validate">
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Contraseña" name="password" [(ngModel)]="usuario.password" id="password" type="password" class="validate">
-          
+          <input class="form-control" placeholder="Contraseña" name="password" [(ngModel)]="usuario.password" id="password" type="password" class="validate">
         </div>
       </div>
-      <!--button class="btn waves-effect waves-light" (click)="updateUser(datosUser)">Update
-      </button-->
-      <button class="btn waves-effect waves-light" (click)="onLogin()" name="action">Iniciar Sesión
-      </button>
+      <div>
+        <button class="btn waves-effect waves-light" (click)="onLogin()" name="action">Iniciar Sesión
+        </button>
+      </div>
     </form>
   </div>
 </div>
